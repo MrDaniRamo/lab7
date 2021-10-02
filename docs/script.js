@@ -59,15 +59,34 @@ $("#animal-buttons").on("click",".animal-button", function(){
 
 })
 
-/*registro del evento para la imagen
-if (state = "false"){
-    $(this).attr("src", $(this).attr("data-still"))
-    %(this).attr("data-isAnimated")
+$("#animals").on("click",".animal-image", function(){
+// Registro del evento para la imagen
+    //alert("hola1");
+    var state1 = $(this).attr("data-isAnimated");
+    if (state1 == "false") {
 
-}
-*/
+    $(this).attr("src", $(this).attr("data-animate"))
+    $(this).attr("data-isAnimated","true");
+
+    }
+    else {
+        $(this).attr("src", $(this).attr("data-still"))
+        $(this).attr("data-isAnimated","false");
+
+    }
+})
+
+$("#animal-form").on("click","#add-animal", function(e){
+    e.preventDefault();
+    var inp = $("#animal-input").val();
+    animals.push(inp);
+    populateButtons(animals, "animal-button", "#animal-buttons");
+})
 
 
 populateButtons(animals, "animal-button", "#animal-buttons");
 
 });
+
+
+
